@@ -1,16 +1,7 @@
-let principal = $('#principal').val();
-let rate = $('#rate').val();
-let years = $('#years').val();
 $("#calculate").click(function () {
   let principal = $('#principal').val();
-  alert(principal);
-  principal = $('#balance').val();
-  rate = $('#rate').val();
-  years = $('#years').val();
-  period = 12;
-  monthlyInterestRate = (rate / 100) / period;
-  numberOfPayments = loanTerms * period;
-  compoundedInterestRate = Math.pow((1 + monthlyInterestRate), numberOfPayments);
-  interestQuotient = (monthlyInterestRate * compoundedInterestRate) / (compoundedInterestRate - 1);
-  monthlyPayment = principal * interestQuotient;
+  let rate = ($('#rate').val()) / 1200;
+  let months = $('#months').val();
+  var monthlyPayment = principal * (rate * Math.pow((1 + rate), months))/(Math.pow((1 + rate), months) - 1);
+  $('#monthlyPaymentMessage').text("You're monthly payment is $" + monthlyPayment.toFixed(2));
 });
